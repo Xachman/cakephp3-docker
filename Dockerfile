@@ -14,9 +14,11 @@ wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmlt
 tar xvf /tmp/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /opt/ && \
 ln -s /opt/wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf && \
 rm -Rf /tmp/* && \
+
 a2enmod rewrite
 
 RUN rm -rf /var/www/* && sed -i 's/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/www\/webroot/g' /etc/apache2/sites-available/000-default.conf
 
+COPY apache2.conf /etc/apache2
 
 CMD /var/www/bin/cake migrations migrate; apache2-foreground
