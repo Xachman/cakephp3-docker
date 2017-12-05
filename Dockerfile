@@ -18,7 +18,7 @@ a2enmod rewrite
 
 WORKDIR /var/www
 
-RUN rm -rf /var/www/* && sed -i 's/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/www\/webroot/g' /etc/apache2/sites-available/000-default.conf
+RUN rm -rf /var/www/* && sed -i 's/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/www/g' /etc/apache2/sites-available/000-default.conf
 
 COPY apache2.conf /etc/apache2
 
